@@ -17,8 +17,8 @@
    - [2.5 公告管理（王子扬）](#25-公告管理王子扬)
    - [2.6 预警事件（王子扬）](#26-预警事件王子扬)
    - [2.7 Excel 导出（王子扬）](#27-excel-导出王子扬)
-   - [2.8 社区概览与一键评估（丙）](#28-社区概览与一键评估丙)
-   - [2.9 健康与环境数据（丙）](#29-健康与环境数据丙)
+   - [2.8 社区概览与一键评估（叶金枝）](#28-社区概览与一键评估叶金枝)
+   - [2.9 健康与环境数据（叶金枝）](#29-健康与环境数据叶金枝)
 3. [架构设计](#3-架构设计)
 4. [类图](#4-类图)
 5. [ER 图](#5-er-图)
@@ -395,7 +395,7 @@ public void exportAlerts(@RequestParam(required = false) String status,
 
 ---
 
-### 2.8 社区概览与一键评估（丙）
+### 2.8 社区概览与一键评估（叶金枝）
 
 **功能概述**
 大屏首页统计：老人总数、风险等级分布（HIGH/MEDIUM/LOW）、健康分均值、楼栋分布、在线率。一键重新计算全员健康分 → 风险等级 → 护理等级。
@@ -472,7 +472,7 @@ public AssessAllVO assessAll() {
 
 ---
 
-### 2.9 健康与环境数据（丙）
+### 2.9 健康与环境数据（叶金枝）
 
 **功能概述**
 分页查询老人的健康监测数据（心率/呼吸/睡眠/体动/在床状态）和环境监测数据（温湿度/空气质量），返回固定 24 小时范围内的设备采集记录。
@@ -712,7 +712,7 @@ AlertEventController ..> BatchStatusUpdateRequest
 @enduml
 ```
 
-### 丙 - 社区/评估/健康环境类图
+### 叶金枝 - 社区/评估/健康环境类图
 
 ```plantuml
 @startuml
@@ -897,7 +897,7 @@ stop
 @enduml
 ```
 
-### 一键评估流程（丙）
+### 一键评估流程（叶金枝）
 
 ```plantuml
 @startuml
@@ -985,24 +985,24 @@ stop
 | PUT | `/api/elderly` | 李岩 |
 | DELETE | `/api/elderly/{id}` | 李岩 |
 
-### 健康数据 `/api/elderly/{elderlyId}/health`（丙）
+### 健康数据 `/api/elderly/{elderlyId}/health`（叶金枝）
 
 | 方法 | 路径 | 负责人 |
 | --- | --- | --- |
-| GET | `/page` | 丙 |
+| GET | `/page` | 叶金枝 |
 
-### 环境数据 `/api/elderly/{elderlyId}/environment`（丙）
-
-| 方法 | 路径 | 负责人 |
-| --- | --- | --- |
-| GET | `/page` | 丙 |
-
-### 社区概览 `/api/community`（丙）
+### 环境数据 `/api/elderly/{elderlyId}/environment`（叶金枝）
 
 | 方法 | 路径 | 负责人 |
 | --- | --- | --- |
-| GET | `/overview` | 丙 |
-| POST | `/assess-all` | 丙 |
+| GET | `/page` | 叶金枝 |
+
+### 社区概览 `/api/community`（叶金枝）
+
+| 方法 | 路径 | 负责人 |
+| --- | --- | --- |
+| GET | `/overview` | 叶金枝 |
+| POST | `/assess-all` | 叶金枝 |
 
 ### 预警事件 `/api/alerts`（王子扬）
 
