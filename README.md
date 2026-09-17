@@ -1,7 +1,7 @@
-# elderly-community-monitor
-# 独居老人智能监护系统 · 系统框架文档
 
-> **课程**：面向对象程序设计 · 课程设计 | **分组**：三人组（甲/乙/丙）
+# 社区独居老人健康监护系统 · 系统框架文档
+
+> **课程**：面向对象程序设计 · 课程设计 | **分组**：三人组
 > **技术栈**：Spring Boot 2.6.13 + Java 8 + MyBatis-Plus 3.4 + MySQL + Vue 3 + Element Plus + ECharts + JWT
 
 ---
@@ -10,13 +10,13 @@
 
 1. [系统架构概述](#1-系统架构概述)
 2. [模块详解](#2-模块详解)
-   - [2.1 认证登录（甲）](#21-认证登录甲)
-   - [2.2 老人档案（甲）](#22-老人档案甲)
-   - [2.3 个人中心（甲）](#23-个人中心甲)
-   - [2.4 公共基建（甲）](#24-公共基建甲)
-   - [2.5 公告管理（乙）](#25-公告管理乙)
-   - [2.6 预警事件（乙）](#26-预警事件乙)
-   - [2.7 Excel 导出（乙）](#27-excel-导出乙)
+   - [2.1 认证登录（李岩）](#21-认证登录李岩)
+   - [2.2 老人档案（李岩）](#22-老人档案李岩)
+   - [2.3 个人中心（李岩）](#23-个人中心李岩)
+   - [2.4 公共基建（李岩）](#24-公共基建李岩)
+   - [2.5 公告管理（王子扬）](#25-公告管理王子扬)
+   - [2.6 预警事件（王子扬）](#26-预警事件王子扬)
+   - [2.7 Excel 导出（王子扬）](#27-excel-导出王子扬)
    - [2.8 社区概览与一键评估（丙）](#28-社区概览与一键评估丙)
    - [2.9 健康与环境数据（丙）](#29-健康与环境数据丙)
 3. [架构设计](#3-架构设计)
@@ -65,7 +65,7 @@
 
 ## 2. 模块详解
 
-### 2.1 认证登录（甲）
+### 2.1 认证登录（李岩）
 
 **功能概述**
 用户通过用户名/密码登录，后端校验后签发 JWT 返回前端，前端存入 `sessionStorage`。后续请求通过 `Authorization: Bearer <token>` 携带，拦截器统一校验。
@@ -121,7 +121,7 @@ public void remove(Long uid) { STORE.remove(uid); }
 
 ---
 
-### 2.2 老人档案（甲）
+### 2.2 老人档案（李岩）
 
 **功能概述**
 社区工作人员管理辖区老人档案（增删改查 + 批量概览），档案含姓名/性别/年龄/房间号/紧急联系人/护理等级/风险等级/健康分。
@@ -158,7 +158,7 @@ public List<Elderly> listForRole(String role) {
 
 ---
 
-### 2.3 个人中心（甲）
+### 2.3 个人中心（李岩）
 
 **功能概述**
 登录用户查询/修改自己的基本信息（昵称、电话等非敏感字段）。
@@ -194,7 +194,7 @@ public Result<?> update(@RequestBody User body) {
 
 ---
 
-### 2.4 公共基建（甲）
+### 2.4 公共基建（李岩）
 
 **功能概述**
 全项目共用的基础设施层：统一返回包装、全局异常捕获、MyBatis-Plus 配置、Web MVC 拦截器注册、启动类。
@@ -239,7 +239,7 @@ public void addInterceptors(InterceptorRegistry registry) {
 
 ---
 
-### 2.5 公告管理（乙）
+### 2.5 公告管理（王子扬）
 
 **功能概述**
 管理员/社区创建公告（支持即时发布和预约发布）、分页查询、修改、删除、撤下。定时任务每分钟扫描：预约时间到点自动发布，结束时间到点自动过期。
@@ -281,7 +281,7 @@ public Announcement publish(Announcement a) {
 
 ---
 
-### 2.6 预警事件（乙）
+### 2.6 预警事件（王子扬）
 
 **功能概述**
 接收 IoT 设备上报的摔倒/一键求助/烟雾/情绪低落事件，分页查询（支持类型/状态/关键词过滤）、单条/批量状态更新、清空已解决、单老人预警统计。
@@ -353,7 +353,7 @@ public static String normalizeEventType(String type) {
 
 ---
 
-### 2.7 Excel 导出（乙）
+### 2.7 Excel 导出（王子扬）
 
 **功能概述**
 使用 Apache POI 将预警事件和楼栋汇总报告导出为 `.xlsx`，支持按状态/类型/关键词/楼栋/护理等级/风险等级过滤。
@@ -591,7 +591,7 @@ public static LocalDateTime parse(String reportTime) {
 
 > 图片源文件见 `doc/uml/`，每人一份互不重复。
 
-### 甲 - 认证/档案/基建类图
+### 李岩 - 认证/档案/基建类图
 
 ```plantuml
 @startuml
@@ -670,7 +670,7 @@ GlobalExceptionHandler --> Result
 @enduml
 ```
 
-### 乙 - 公告/导出/预警类图
+### 王子扬 - 公告/导出/预警类图
 
 ```plantuml
 @startuml
@@ -755,7 +755,7 @@ EnvironmentDataService ..> DateTimeParseUtil
 
 ## 5. ER 图
 
-### 全局 ER 图（甲负责）
+### 全局 ER 图（李岩负责）
 
 ```plantuml
 @startuml
@@ -860,7 +860,7 @@ elderly ||--o{ env : "monitor_device_id → device_id"
 
 ## 6. 关键流程图
 
-### 登录鉴权流程（甲）
+### 登录鉴权流程（李岩）
 
 ```plantuml
 @startuml
@@ -934,7 +934,7 @@ stop
 @enduml
 ```
 
-### 预警状态更新流程（乙）
+### 预警状态更新流程（王子扬）
 
 ```plantuml
 @startuml
@@ -959,31 +959,31 @@ stop
 
 ## 7. 接口定义汇总
 
-### 认证 `/api/auth`（甲）
+### 认证 `/api/auth`（李岩）
 
 | 方法 | 路径 | 负责人 |
 | --- | --- | --- |
-| POST | `/api/auth/login` | 甲 |
-| POST | `/api/auth/register` | 甲 |
-| POST | `/api/auth/logout` | 甲 |
+| POST | `/api/auth/login` | 李岩 |
+| POST | `/api/auth/register` | 李岩 |
+| POST | `/api/auth/logout` | 李岩 |
 
-### 个人中心 `/api/profile`（甲）
-
-| 方法 | 路径 | 负责人 |
-| --- | --- | --- |
-| GET | `/api/profile` | 甲 |
-| PUT | `/api/profile` | 甲 |
-
-### 老人档案 `/api/elderly`（甲）
+### 个人中心 `/api/profile`（李岩）
 
 | 方法 | 路径 | 负责人 |
 | --- | --- | --- |
-| GET | `/api/elderly/batch-overview` | 甲 |
-| GET | `/api/elderly/list` | 甲 |
-| GET | `/api/elderly/{id}` | 甲 |
-| POST | `/api/elderly` | 甲 |
-| PUT | `/api/elderly` | 甲 |
-| DELETE | `/api/elderly/{id}` | 甲 |
+| GET | `/api/profile` | 李岩 |
+| PUT | `/api/profile` | 李岩 |
+
+### 老人档案 `/api/elderly`（李岩）
+
+| 方法 | 路径 | 负责人 |
+| --- | --- | --- |
+| GET | `/api/elderly/batch-overview` | 李岩 |
+| GET | `/api/elderly/list` | 李岩 |
+| GET | `/api/elderly/{id}` | 李岩 |
+| POST | `/api/elderly` | 李岩 |
+| PUT | `/api/elderly` | 李岩 |
+| DELETE | `/api/elderly/{id}` | 李岩 |
 
 ### 健康数据 `/api/elderly/{elderlyId}/health`（丙）
 
@@ -1004,32 +1004,32 @@ stop
 | GET | `/overview` | 丙 |
 | POST | `/assess-all` | 丙 |
 
-### 预警事件 `/api/alerts`（乙）
+### 预警事件 `/api/alerts`（王子扬）
 
 | 方法 | 路径 | 负责人 |
 | --- | --- | --- |
-| GET | `/page` | 乙 |
-| PUT | `/{id}/status` | 乙 |
-| PUT | `/batch` | 乙 |
-| DELETE | `/resolved` | 乙 |
-| GET | `/stats/{elderlyId}` | 乙 |
+| GET | `/page` | 王子扬 |
+| PUT | `/{id}/status` | 王子扬 |
+| PUT | `/batch` | 王子扬 |
+| DELETE | `/resolved` | 王子扬 |
+| GET | `/stats/{elderlyId}` | 王子扬 |
 
-### Excel 导出 `/api/export`（乙）
-
-| 方法 | 路径 | 负责人 |
-| --- | --- | --- |
-| GET | `/alerts` | 乙 |
-| GET | `/building-report` | 乙 |
-
-### 公告 `/api/announcements`（乙）
+### Excel 导出 `/api/export`（王子扬）
 
 | 方法 | 路径 | 负责人 |
 | --- | --- | --- |
-| GET | `/page` | 乙 |
-| POST | `/` | 乙 |
-| PUT | `/{id}` | 乙 |
-| DELETE | `/{id}` | 乙 |
-| PUT | `/{id}/recall` | 乙 |
+| GET | `/alerts` | 王子扬 |
+| GET | `/building-report` | 王子扬 |
+
+### 公告 `/api/announcements`（王子扬）
+
+| 方法 | 路径 | 负责人 |
+| --- | --- | --- |
+| GET | `/page` | 王子扬 |
+| POST | `/` | 王子扬 |
+| PUT | `/{id}` | 王子扬 |
+| DELETE | `/{id}` | 王子扬 |
+| PUT | `/{id}/recall` | 王子扬 |
 
 **共 27 个 API 端点**
 
