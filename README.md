@@ -1,4 +1,3 @@
-
 # 社区独居老人健康监护系统 · 系统框架文档
 
 > **课程**：面向对象程序设计 · 课程设计 | **分组**：三人组
@@ -72,15 +71,15 @@
 
 **关键类**
 
-| 类 | 路径 | 职责 |
-| --- | --- | --- |
-| `AuthController` | `controller/AuthController.java` | 登录/注册/登出 REST API |
-| `AuthService` | `auth/AuthService.java` | 业务校验 + JWT 签发/解析 |
-| `AuthInterceptor` | `auth/AuthInterceptor.java` | 拦截器：提取 token → 校验签名 → 查 TokenStore |
-| `AuthContext` | `auth/AuthContext.java` | ThreadLocal 存储当前登录用户 |
-| `TokenStoreService` | `auth/TokenStoreService.java` | ConcurrentHashMap 内存 Token 存储 |
-| `JwtUtil` | `util/JwtUtil.java` | JJWT 封装：签发 / 解析 / 过期判断 |
-| `UserRole` | `enums/UserRole.java` | 角色枚举 + FAMILY 禁止登录校验 |
+| 类                   | 路径                               | 职责                                 |
+| ------------------- | -------------------------------- | ---------------------------------- |
+| `AuthController`    | `controller/AuthController.java` | 登录/注册/登出 REST API                  |
+| `AuthService`       | `auth/AuthService.java`          | 业务校验 + JWT 签发/解析                   |
+| `AuthInterceptor`   | `auth/AuthInterceptor.java`      | 拦截器：提取 token → 校验签名 → 查 TokenStore |
+| `AuthContext`       | `auth/AuthContext.java`          | ThreadLocal 存储当前登录用户               |
+| `TokenStoreService` | `auth/TokenStoreService.java`    | ConcurrentHashMap 内存 Token 存储      |
+| `JwtUtil`           | `util/JwtUtil.java`              | JJWT 封装：签发 / 解析 / 过期判断             |
+| `UserRole`          | `enums/UserRole.java`            | 角色枚举 + FAMILY 禁止登录校验               |
 
 **核心代码摘录**
 
@@ -115,6 +114,7 @@ public void remove(Long uid) { STORE.remove(uid); }
 ```
 
 **设计要点**
+
 - 拦截器放行 `/api/auth/login` 和 `/api/auth/register`
 - `AuthContext` 使用 `ThreadLocal`，请求结束后 `afterCompletion` 清理，防止线程池线程复用时串数据
 - FAMILY 角色在 `AuthService.login` 中硬编码拒绝
@@ -128,14 +128,14 @@ public void remove(Long uid) { STORE.remove(uid); }
 
 **关键类**
 
-| 类 | 路径 | 职责 |
-| --- | --- | --- |
-| `ElderlyController` | `controller/ElderlyController.java` | REST API |
-| `ElderlyService` | `service/ElderlyService.java` | 档案 CRUD 业务 |
+| 类                      | 路径                                  | 职责                                        |
+| ---------------------- | ----------------------------------- | ----------------------------------------- |
+| `ElderlyController`    | `controller/ElderlyController.java` | REST API                                  |
+| `ElderlyService`       | `service/ElderlyService.java`       | 档案 CRUD 业务                                |
 | `ElderlyAccessService` | `service/ElderlyAccessService.java` | 角色隔离查询（admin 全部/community 全部/elder 仅自己关联） |
-| `Elderly` | `entity/Elderly.java` | `elder_profiles` 实体 |
-| `ElderlyMapper` | `mapper/ElderlyMapper.java` | MyBatis-Plus Mapper |
-| `IdCardUtil` | `util/IdCardUtil.java` | 身份证号解析（生日/性别） |
+| `Elderly`              | `entity/Elderly.java`               | `elder_profiles` 实体                       |
+| `ElderlyMapper`        | `mapper/ElderlyMapper.java`         | MyBatis-Plus Mapper                       |
+| `IdCardUtil`           | `util/IdCardUtil.java`              | 身份证号解析（生日/性别）                             |
 
 **核心代码摘录**
 
@@ -165,10 +165,10 @@ public List<Elderly> listForRole(String role) {
 
 **关键类**
 
-| 类 | 路径 | 职责 |
-| --- | --- | --- |
-| `ProfileController` | `controller/ProfileController.java` | REST API |
-| `User` | `entity/User.java` | `users` 实体（密码字段 @JsonIgnore） |
+| 类                   | 路径                                  | 职责                           |
+| ------------------- | ----------------------------------- | ---------------------------- |
+| `ProfileController` | `controller/ProfileController.java` | REST API                     |
+| `User`              | `entity/User.java`                  | `users` 实体（密码字段 @JsonIgnore） |
 
 **核心代码摘录**
 
@@ -201,14 +201,14 @@ public Result<?> update(@RequestBody User body) {
 
 **关键类**
 
-| 类 | 路径 | 职责 |
-| --- | --- | --- |
-| `DemoApplication` | 根包 | Spring Boot 启动类（含 `@MapperScan` + `@EnableScheduling`） |
-| `Result<T>` | `common/Result.java` | 统一响应 `{code, msg, data}` |
-| `GlobalExceptionHandler` | `common/GlobalExceptionHandler.java` | `@ControllerAdvice` 捕获业务异常 |
-| `MybatisPlusConfig` | `common/MybatisPlusConfig.java` | PaginationInnerInterceptor + 表名反引号 |
-| `WebMvcConfig` | `config/WebMvcConfig.java` | 注册拦截器 + 放行路径 |
-| `BusinessException` | `exception/BusinessException.java` | 带 code 的业务异常 |
+| 类                        | 路径                                   | 职责                                                     |
+| ------------------------ | ------------------------------------ | ------------------------------------------------------ |
+| `DemoApplication`        | 根包                                   | Spring Boot 启动类（含 `@MapperScan` + `@EnableScheduling`） |
+| `Result<T>`              | `common/Result.java`                 | 统一响应 `{code, msg, data}`                               |
+| `GlobalExceptionHandler` | `common/GlobalExceptionHandler.java` | `@ControllerAdvice` 捕获业务异常                             |
+| `MybatisPlusConfig`      | `common/MybatisPlusConfig.java`      | PaginationInnerInterceptor + 表名反引号                     |
+| `WebMvcConfig`           | `config/WebMvcConfig.java`           | 注册拦截器 + 放行路径                                           |
+| `BusinessException`      | `exception/BusinessException.java`   | 带 code 的业务异常                                           |
 
 **核心代码摘录**
 
@@ -246,13 +246,13 @@ public void addInterceptors(InterceptorRegistry registry) {
 
 **关键类**
 
-| 类 | 路径 | 职责 |
-| --- | --- | --- |
-| `AnnouncementController` | `controller/AnnouncementController.java` | REST API |
-| `AnnouncementService` | `service/AnnouncementService.java` | 业务逻辑 + 状态流转 |
-| `Announcement` | `entity/Announcement.java` | `announcements` 实体 |
-| `AnnouncementMapper` | `mapper/AnnouncementMapper.java` | MyBatis-Plus Mapper |
-| `AnnouncementScheduledTask` | `task/AnnouncementScheduledTask.java` | `@Scheduled` 定时扫描 |
+| 类                           | 路径                                       | 职责                  |
+| --------------------------- | ---------------------------------------- | ------------------- |
+| `AnnouncementController`    | `controller/AnnouncementController.java` | REST API            |
+| `AnnouncementService`       | `service/AnnouncementService.java`       | 业务逻辑 + 状态流转         |
+| `Announcement`              | `entity/Announcement.java`               | `announcements` 实体  |
+| `AnnouncementMapper`        | `mapper/AnnouncementMapper.java`         | MyBatis-Plus Mapper |
+| `AnnouncementScheduledTask` | `task/AnnouncementScheduledTask.java`    | `@Scheduled` 定时扫描   |
 
 **核心代码摘录**
 
@@ -288,15 +288,15 @@ public Announcement publish(Announcement a) {
 
 **关键类**
 
-| 类 | 路径 | 职责 |
-| --- | --- | --- |
-| `AlertEventController` | `controller/AlertEventController.java` | REST API |
-| `AlertEventService` | `service/AlertEventService.java` | 状态流转 + 同义组归一 + remark→type 匹配守卫 |
-| `AlertEvent` | `entity/AlertEvent.java` | `alerts` 实体 |
-| `AlertEventMapper` | `mapper/AlertEventMapper.java` | MyBatis-Plus Mapper |
-| `AlertEventType` | `enums/AlertEventType.java` | 原始枚举 FALL/GAS/SMOKE/SEDENTARY/OTHER（归一化在 Service） |
-| `AlertEventStatus` | `enums/AlertEventStatus.java` | 原始枚举 NEW/ACK/PROCESSING/CLOSED/FALSE_ALARM |
-| `AlertStatusUpdateRequest` | `dto/AlertStatusUpdateRequest.java` | 状态更新请求 DTO |
+| 类                          | 路径                                     | 职责                                                |
+| -------------------------- | -------------------------------------- | ------------------------------------------------- |
+| `AlertEventController`     | `controller/AlertEventController.java` | REST API                                          |
+| `AlertEventService`        | `service/AlertEventService.java`       | 状态流转 + 同义组归一 + remark→type 匹配守卫                   |
+| `AlertEvent`               | `entity/AlertEvent.java`               | `alerts` 实体                                       |
+| `AlertEventMapper`         | `mapper/AlertEventMapper.java`         | MyBatis-Plus Mapper                               |
+| `AlertEventType`           | `enums/AlertEventType.java`            | 原始枚举 FALL/GAS/SMOKE/SEDENTARY/OTHER（归一化在 Service） |
+| `AlertEventStatus`         | `enums/AlertEventStatus.java`          | 原始枚举 NEW/ACK/PROCESSING/CLOSED/FALSE_ALARM        |
+| `AlertStatusUpdateRequest` | `dto/AlertStatusUpdateRequest.java`    | 状态更新请求 DTO                                        |
 
 **核心代码摘录**
 
@@ -360,8 +360,8 @@ public static String normalizeEventType(String type) {
 
 **关键类**
 
-| 类 | 路径 | 职责 |
-| --- | --- | --- |
+| 类                  | 路径                                 | 职责                |
+| ------------------ | ---------------------------------- | ----------------- |
 | `ExportController` | `controller/ExportController.java` | REST API + POI 写入 |
 
 **核心代码摘录**
@@ -402,12 +402,12 @@ public void exportAlerts(@RequestParam(required = false) String status,
 
 **关键类**
 
-| 类 | 路径 | 职责 |
-| --- | --- | --- |
-| `CommunityController` | `controller/CommunityController.java` | REST API |
+| 类                          | 路径                                      | 职责                |
+| -------------------------- | --------------------------------------- | ----------------- |
+| `CommunityController`      | `controller/CommunityController.java`   | REST API          |
 | `CommunityOverviewService` | `service/CommunityOverviewService.java` | 概览统计 + 健康分计算 + 评估 |
-| `CommunityOverviewVO` | `dto/CommunityOverviewVO.java` | 概览返回 VO |
-| `AssessAllVO` | `dto/AssessAllVO.java` | 评估返回 VO |
+| `CommunityOverviewVO`      | `dto/CommunityOverviewVO.java`          | 概览返回 VO           |
+| `AssessAllVO`              | `dto/AssessAllVO.java`                  | 评估返回 VO           |
 
 **核心代码摘录**
 
@@ -479,15 +479,15 @@ public AssessAllVO assessAll() {
 
 **关键类**
 
-| 类 | 路径 | 职责 |
-| --- | --- | --- |
-| `HealthDataController` | `controller/HealthDataController.java` | REST API |
-| `EnvironmentDataController` | `controller/EnvironmentDataController.java` | REST API |
-| `HealthDataService` | `service/HealthDataService.java` | 数据查询 + 模拟画像生成器 |
-| `EnvironmentDataService` | `service/EnvironmentDataService.java` | 数据查询 + 温湿度尖峰过滤 |
-| `HealthData` | `entity/HealthData.java` | `health_history` 实体 |
-| `EnvironmentData` | `entity/EnvironmentData.java` | `environment_history` 实体 |
-| `DateTimeParseUtil` | `util/DateTimeParseUtil.java` | 字符串 ↔ LocalDateTime 转换 |
+| 类                           | 路径                                          | 职责                       |
+| --------------------------- | ------------------------------------------- | ------------------------ |
+| `HealthDataController`      | `controller/HealthDataController.java`      | REST API                 |
+| `EnvironmentDataController` | `controller/EnvironmentDataController.java` | REST API                 |
+| `HealthDataService`         | `service/HealthDataService.java`            | 数据查询 + 模拟画像生成器           |
+| `EnvironmentDataService`    | `service/EnvironmentDataService.java`       | 数据查询 + 温湿度尖峰过滤           |
+| `HealthData`                | `entity/HealthData.java`                    | `health_history` 实体      |
+| `EnvironmentData`           | `entity/EnvironmentData.java`               | `environment_history` 实体 |
+| `DateTimeParseUtil`         | `util/DateTimeParseUtil.java`               | 字符串 ↔ LocalDateTime 转换   |
 
 **核心代码摘录**
 
@@ -755,7 +755,7 @@ EnvironmentDataService ..> DateTimeParseUtil
 
 ## 5. ER 图
 
-### 全局 ER 图（李岩负责）
+### 全局 ER 图
 
 ```plantuml
 @startuml
@@ -851,6 +851,7 @@ elderly ||--o{ env : "monitor_device_id → device_id"
 ```
 
 **ER 图说明**：
+
 - `elder_profiles.elder_user_id` 关联 `users.id`（仅 elder 角色账号）
 - `health_history.device_id` 关联 `elder_profiles.monitor_device_id`（逻辑关联，无外键约束）
 - `environment_history.device_id` 同上
@@ -961,79 +962,74 @@ stop
 
 ### 认证 `/api/auth`（李岩）
 
-| 方法 | 路径 | 负责人 |
-| --- | --- | --- |
-| POST | `/api/auth/login` | 李岩 |
-| POST | `/api/auth/register` | 李岩 |
-| POST | `/api/auth/logout` | 李岩 |
+| 方法   | 路径                   | 负责人 |
+| ---- | -------------------- | --- |
+| POST | `/api/auth/login`    | 李岩  |
+| POST | `/api/auth/register` | 李岩  |
+| POST | `/api/auth/logout`   | 李岩  |
 
 ### 个人中心 `/api/profile`（李岩）
 
-| 方法 | 路径 | 负责人 |
-| --- | --- | --- |
-| GET | `/api/profile` | 李岩 |
-| PUT | `/api/profile` | 李岩 |
+| 方法  | 路径             | 负责人 |
+| --- | -------------- | --- |
+| GET | `/api/profile` | 李岩  |
+| PUT | `/api/profile` | 李岩  |
 
 ### 老人档案 `/api/elderly`（李岩）
 
-| 方法 | 路径 | 负责人 |
-| --- | --- | --- |
-| GET | `/api/elderly/batch-overview` | 李岩 |
-| GET | `/api/elderly/list` | 李岩 |
-| GET | `/api/elderly/{id}` | 李岩 |
-| POST | `/api/elderly` | 李岩 |
-| PUT | `/api/elderly` | 李岩 |
-| DELETE | `/api/elderly/{id}` | 李岩 |
+| 方法     | 路径                            | 负责人 |
+| ------ | ----------------------------- | --- |
+| GET    | `/api/elderly/batch-overview` | 李岩  |
+| GET    | `/api/elderly/list`           | 李岩  |
+| GET    | `/api/elderly/{id}`           | 李岩  |
+| POST   | `/api/elderly`                | 李岩  |
+| PUT    | `/api/elderly`                | 李岩  |
+| DELETE | `/api/elderly/{id}`           | 李岩  |
 
 ### 健康数据 `/api/elderly/{elderlyId}/health`（叶金枝）
 
-| 方法 | 路径 | 负责人 |
-| --- | --- | --- |
+| 方法  | 路径      | 负责人 |
+| --- | ------- | --- |
 | GET | `/page` | 叶金枝 |
 
 ### 环境数据 `/api/elderly/{elderlyId}/environment`（叶金枝）
 
-| 方法 | 路径 | 负责人 |
-| --- | --- | --- |
+| 方法  | 路径      | 负责人 |
+| --- | ------- | --- |
 | GET | `/page` | 叶金枝 |
 
 ### 社区概览 `/api/community`（叶金枝）
 
-| 方法 | 路径 | 负责人 |
-| --- | --- | --- |
-| GET | `/overview` | 叶金枝 |
+| 方法   | 路径            | 负责人 |
+| ---- | ------------- | --- |
+| GET  | `/overview`   | 叶金枝 |
 | POST | `/assess-all` | 叶金枝 |
 
 ### 预警事件 `/api/alerts`（王子扬）
 
-| 方法 | 路径 | 负责人 |
-| --- | --- | --- |
-| GET | `/page` | 王子扬 |
-| PUT | `/{id}/status` | 王子扬 |
-| PUT | `/batch` | 王子扬 |
-| DELETE | `/resolved` | 王子扬 |
-| GET | `/stats/{elderlyId}` | 王子扬 |
+| 方法     | 路径                   | 负责人 |
+| ------ | -------------------- | --- |
+| GET    | `/page`              | 王子扬 |
+| PUT    | `/{id}/status`       | 王子扬 |
+| PUT    | `/batch`             | 王子扬 |
+| DELETE | `/resolved`          | 王子扬 |
+| GET    | `/stats/{elderlyId}` | 王子扬 |
 
 ### Excel 导出 `/api/export`（王子扬）
 
-| 方法 | 路径 | 负责人 |
-| --- | --- | --- |
-| GET | `/alerts` | 王子扬 |
+| 方法  | 路径                 | 负责人 |
+| --- | ------------------ | --- |
+| GET | `/alerts`          | 王子扬 |
 | GET | `/building-report` | 王子扬 |
 
 ### 公告 `/api/announcements`（王子扬）
 
-| 方法 | 路径 | 负责人 |
-| --- | --- | --- |
-| GET | `/page` | 王子扬 |
-| POST | `/` | 王子扬 |
-| PUT | `/{id}` | 王子扬 |
-| DELETE | `/{id}` | 王子扬 |
-| PUT | `/{id}/recall` | 王子扬 |
-
-**共 27 个 API 端点**
+| 方法     | 路径             | 负责人 |
+| ------ | -------------- | --- |
+| GET    | `/page`        | 王子扬 |
+| POST   | `/`            | 王子扬 |
+| PUT    | `/{id}`        | 王子扬 |
+| DELETE | `/{id}`        | 王子扬 |
+| PUT    | `/{id}/recall` | 王子扬 |
 
 ---
-
-*文档生成时间：2026-09-17 | 基于项目源码自动扫描生成*
-

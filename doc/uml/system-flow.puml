@@ -1,0 +1,50 @@
+@startuml system-flow
+title 独居老人智能监护系统 · 请求处理流程
+
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontName "Microsoft YaHei"
+skinparam defaultFontSize 13
+skinparam activity {
+  BackgroundColor #F3F6F4
+  BorderColor #D9E0DA
+  DiamondBackgroundColor #E8F5EE
+  DiamondBorderColor #16A34A
+  DiamondFontSize 13
+}
+skinparam ArrowColor #16A34A
+skinparam partition {
+  BorderColor #9AA8A0
+  BorderStyle dashed
+  FontSize 13
+}
+
+start
+:用户请求（浏览器）;
+:Axios 统一封装，携带 JWT 令牌;
+
+if (AuthInterceptor\nJWT 令牌校验) then (无效)
+  #FDECEC:401 未认证\n拒绝访问;
+  stop
+else (有效)
+  if (社区管理员身份校验) then (非管理员)
+    #FDECEC:403 无权限\n拒绝访问;
+    stop
+  else (通过)
+    partition "后端业务处理（Spring Boot 分层）" {
+      :Controller 接口层\n参数绑定与校验;
+      :Service 业务层\n档案 · 公告 · 预警 · 评估;
+      :Mapper 持久层（MyBatis-Plus）;
+      :MySQL 数据读写;
+    }
+    if (业务异常？) then (是)
+      :GlobalExceptionHandler\n捕获并转换;
+      :Result.fail(code, msg);
+    else (否)
+      :Result.ok(data);
+    endif
+    :Result<T> 统一响应返回前端;
+    :Axios 拦截器处理结果\n前端页面渲染;
+    stop
+  endif
+endif
+@enduml
