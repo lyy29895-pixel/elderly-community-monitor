@@ -30,9 +30,7 @@ import java.util.stream.Collectors;
  * <p>聚合全部老人档案与告警事件，统计待处理/紧急未关闭事件、性别年龄分布、设备绑定与
  * 事件解决情况，并结合模拟生命体征画像计算每位老人的健康评分、风险等级与护理等级，
  * 同时提供社区工作人员/管理员的全员一键评估能力。</p>
- *
- * @author 丙
- */
+ * */
 @Service
 public class CommunityOverviewService {
 

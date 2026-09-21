@@ -18,9 +18,7 @@ import java.util.List;
 /**
  * 老人档案业务服务：按当前登录角色提供档案的查询、增删改，
  * 所有访问均通过 {@link ElderlyAccessService} 进行权限校验。
- *
- * @author 甲
- */
+ * */
 @Service
 public class ElderlyService {
 

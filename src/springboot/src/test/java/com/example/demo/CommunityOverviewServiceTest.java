@@ -26,9 +26,7 @@ import static org.junit.Assert.*;
  *   1. 后端服务已停止（避免端口9090冲突，本测试不启动Web服务器）
  *   2. 数据库连接正常（腾讯云 CynosDB community 库）
  *   3. elder_profiles 表有8条初始数据
- *
- * @author 乙
- */
+ * */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 public class CommunityOverviewServiceTest {

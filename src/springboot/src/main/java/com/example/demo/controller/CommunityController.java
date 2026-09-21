@@ -13,9 +13,7 @@ import javax.annotation.Resource;
 
 /**
  * 辖区监控接口：提供社区工作人员/管理员的辖区概览查询与全员一键评估入口。
- *
- * @author 丙
- */
+ * */
 @RestController
 @RequestMapping("/api/community")
 public class CommunityController {

@@ -115,14 +115,6 @@
                 <configuration>
                     <mainClass>com.example.demo.DemoApplication</mainClass>
                     <skip>false</skip>
-                    <jvmArguments>
-                        --add-opens java.base/java.lang=ALL-UNNAMED
-                        --add-opens java.base/java.lang.invoke=ALL-UNNAMED
-                        --add-opens java.base/java.util=ALL-UNNAMED
-                        --add-opens java.base/java.lang.reflect=ALL-UNNAMED
-                        --add-opens java.base/java.text=ALL-UNNAMED
-                        --add-opens java.base/java.time=ALL-UNNAMED
-                    </jvmArguments>
                 </configuration>
                 <executions>
                     <execution>

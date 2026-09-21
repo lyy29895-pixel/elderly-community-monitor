@@ -19,9 +19,7 @@ import java.util.Random;
 /**
  * 老人档案与监护概览接口，接口前缀 /api/elderly；
  * 提供档案增删改查及模拟的环境、健康、设备状态批量概览数据。
- *
- * @author 甲
- */
+ * */
 @RestController
 @RequestMapping("/api/elderly")
 public class ElderlyController {

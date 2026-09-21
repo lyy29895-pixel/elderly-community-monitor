@@ -8,9 +8,7 @@ import java.util.List;
 
 /**
  * 全量老人一键评估结果
- *
- * @author 丙
- */
+ * */
 @Data
 public class AssessAllVO {
 

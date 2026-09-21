@@ -162,3 +162,68 @@ INSERT INTO `announcements` (`title`, `content`, `priority`, `publish_type`, `pu
 VALUES
 ('冬季安全用电提醒', '近期气温骤降，请各位老人注意用电安全，不要在卧室使用大功率电器，电热毯使用前请检查线路。', 2, 0, NOW(), 1, DATE_ADD(NOW(), INTERVAL 30 DAY)),
 ('社区体检通知', '本周三上午9点在社区服务中心进行免费健康体检，请各位老人空腹前往。', 1, 0, NOW(), 1, DATE_ADD(NOW(), INTERVAL 7 DAY));
+
+-- 健康监测演示数据：今天多个时间点，覆盖高风险（DEV_001/005/008）与低风险（DEV_003/006）设备
+-- report_time 与代码一致使用 ISO 格式（yyyy-MM-ddTHH:mm:ss），recorded_at 为北京时间毫秒时间戳
+INSERT INTO `health_history`
+(`device_id`, `health_score`, `heart_rate`, `breathing_rate`, `sleep_status`, `sleep_score`,
+ `motion_index`, `on_bed_status`, `posture_status`, `device_online`, `report_time`, `recorded_at`)
+VALUES
+-- DEV_001 陈守田（高风险）：清晨离床 + 心率异常，午后恢复
+('DEV_001', 45, 96, 24, 'AWAKE',       55, 8.5,  'OFF_BED', 'STANDING', 1, CONCAT(CURDATE(), 'T06:10:00'), ROUND(UNIX_TIMESTAMP(CONCAT(CURDATE(), ' 06:10:00')) * 1000)),
+('DEV_001', 42, 102, 26, 'AWAKE',      50, 12.0, 'OFF_BED', 'WALKING',  1, CONCAT(CURDATE(), 'T09:30:00'), ROUND(UNIX_TIMESTAMP(CONCAT(CURDATE(), ' 09:30:00')) * 1000)),
+('DEV_001', 48, 88,  22, 'LIGHT_SLEEP', 60, 3.2, 'ON_BED',  'LYING',    1, CONCAT(CURDATE(), 'T14:00:00'), ROUND(UNIX_TIMESTAMP(CONCAT(CURDATE(), ' 14:00:00')) * 1000)),
+('DEV_001', 50, 84,  21, 'AWAKE',       65, 2.1, 'ON_BED',  'SITTING',  1, CONCAT(CURDATE(), 'T18:30:00'), ROUND(UNIX_TIMESTAMP(CONCAT(CURDATE(), ' 18:30:00')) * 1000)),
+-- DEV_002 王秀兰（中风险）
+('DEV_002', 62, 76, 19, 'LIGHT_SLEEP', 72, 1.8, 'ON_BED', 'LYING', 1, CONCAT(CURDATE(), 'T08:00:00'), ROUND(UNIX_TIMESTAMP(CONCAT(CURDATE(), ' 08:00:00')) * 1000)),
+('DEV_002', 65, 80, 20, 'AWAKE',       70, 4.5, 'ON_BED', 'SITTING', 1, CONCAT(CURDATE(), 'T15:20:00'), ROUND(UNIX_TIMESTAMP(CONCAT(CURDATE(), ' 15:20:00')) * 1000)),
+-- DEV_003 李建国（低风险，指标平稳）
+('DEV_003', 85, 70, 17, 'DEEP_SLEEP', 90, 0.8, 'ON_BED', 'LYING', 1, CONCAT(CURDATE(), 'T07:00:00'), ROUND(UNIX_TIMESTAMP(CONCAT(CURDATE(), ' 07:00:00')) * 1000)),
+('DEV_003', 88, 72, 18, 'AWAKE',       88, 3.6, 'OFF_BED', 'WALKING', 1, CONCAT(CURDATE(), 'T16:00:00'), ROUND(UNIX_TIMESTAMP(CONCAT(CURDATE(), ' 16:00:00')) * 1000)),
+-- DEV_005 刘德海（高风险，起搏器）
+('DEV_005', 38, 58, 16, 'LIGHT_SLEEP', 48, 0.5, 'ON_BED', 'LYING', 1, CONCAT(CURDATE(), 'T05:40:00'), ROUND(UNIX_TIMESTAMP(CONCAT(CURDATE(), ' 05:40:00')) * 1000)),
+('DEV_005', 35, 55, 15, 'AWAKE',       45, 1.2, 'ON_BED', 'LYING', 1, CONCAT(CURDATE(), 'T11:00:00'), ROUND(UNIX_TIMESTAMP(CONCAT(CURDATE(), ' 11:00:00')) * 1000)),
+('DEV_005', 40, 62, 18, 'AWAKE',       52, 2.0, 'ON_BED', 'SITTING', 1, CONCAT(CURDATE(), 'T19:10:00'), ROUND(UNIX_TIMESTAMP(CONCAT(CURDATE(), ' 19:10:00')) * 1000)),
+-- DEV_006 赵淑珍（低风险）
+('DEV_006', 90, 74, 18, 'DEEP_SLEEP', 92, 0.6, 'ON_BED', 'LYING', 1, CONCAT(CURDATE(), 'T07:30:00'), ROUND(UNIX_TIMESTAMP(CONCAT(CURDATE(), ' 07:30:00')) * 1000)),
+('DEV_006', 92, 78, 19, 'AWAKE',       90, 5.0, 'OFF_BED', 'WALKING', 1, CONCAT(CURDATE(), 'T17:00:00'), ROUND(UNIX_TIMESTAMP(CONCAT(CURDATE(), ' 17:00:00')) * 1000)),
+-- DEV_008 周佩兰（高风险，跌倒风险高）
+('DEV_008', 42, 92, 23, 'AWAKE',       50, 9.8, 'OFF_BED', 'WALKING', 1, CONCAT(CURDATE(), 'T08:45:00'), ROUND(UNIX_TIMESTAMP(CONCAT(CURDATE(), ' 08:45:00')) * 1000)),
+('DEV_008', 45, 86, 21, 'LIGHT_SLEEP', 58, 2.4, 'ON_BED', 'LYING', 1, CONCAT(CURDATE(), 'T13:30:00'), ROUND(UNIX_TIMESTAMP(CONCAT(CURDATE(), ' 13:30:00')) * 1000)),
+-- 离线设备样例：DEV_007 最后一次上报后离线
+('DEV_007', 55, 82, 20, 'AWAKE', 60, 3.0, 'ON_BED', 'SITTING', 0, CONCAT(CURDATE() - INTERVAL 1 DAY, 'T20:00:00'), ROUND(UNIX_TIMESTAMP(CONCAT(CURDATE() - INTERVAL 1 DAY, ' 20:00:00')) * 1000));
+
+-- 环境监测演示数据：温湿度/空气质量/光照，含一条离线记录
+INSERT INTO `environment_history`
+(`device_id`, `temperature`, `humidity`, `air_quality`, `illumination`, `device_online`, `report_time`, `recorded_at`)
+VALUES
+('DEV_001', 22.5, 55.0, 62.0, 320.50, 1, NOW() - INTERVAL 240 MINUTE, ROUND(UNIX_TIMESTAMP(NOW() - INTERVAL 240 MINUTE) * 1000)),
+('DEV_001', 23.1, 53.5, 58.0, 450.00, 1, NOW() - INTERVAL 180 MINUTE, ROUND(UNIX_TIMESTAMP(NOW() - INTERVAL 180 MINUTE) * 1000)),
+('DEV_001', 24.0, 52.0, 71.5, 380.20, 1, NOW() - INTERVAL 60 MINUTE,  ROUND(UNIX_TIMESTAMP(NOW() - INTERVAL 60 MINUTE) * 1000)),
+('DEV_002', 21.8, 60.5, 45.0, 210.00, 1, NOW() - INTERVAL 120 MINUTE, ROUND(UNIX_TIMESTAMP(NOW() - INTERVAL 120 MINUTE) * 1000)),
+('DEV_003', 23.5, 48.0, 35.0, 620.80, 1, NOW() - INTERVAL 90 MINUTE,  ROUND(UNIX_TIMESTAMP(NOW() - INTERVAL 90 MINUTE) * 1000)),
+('DEV_004', 26.8, 65.5, 88.0, 150.00, 1, NOW() - INTERVAL 45 MINUTE,  ROUND(UNIX_TIMESTAMP(NOW() - INTERVAL 45 MINUTE) * 1000)),
+('DEV_005', 20.5, 70.0, 95.5, 80.00,  1, NOW() - INTERVAL 30 MINUTE,  ROUND(UNIX_TIMESTAMP(NOW() - INTERVAL 30 MINUTE) * 1000)),
+('DEV_006', 23.0, 50.0, 30.0, 700.00, 1, NOW() - INTERVAL 20 MINUTE,  ROUND(UNIX_TIMESTAMP(NOW() - INTERVAL 20 MINUTE) * 1000)),
+('DEV_007', 18.2, 75.0, 92.0, 5.50,   0, NOW() - INTERVAL 600 MINUTE, ROUND(UNIX_TIMESTAMP(NOW() - INTERVAL 600 MINUTE) * 1000)),
+('DEV_008', 22.0, 58.0, 66.0, 260.00, 1, NOW() - INTERVAL 15 MINUTE,  ROUND(UNIX_TIMESTAMP(NOW() - INTERVAL 15 MINUTE) * 1000));
+
+-- 预警事件演示数据：覆盖摔倒/求助/情绪/烟雾四类，状态含未处理/处理中/已解决
+-- elder_name/room 为事件发生时快照；timeline_json 为处理时间线
+INSERT INTO `alerts`
+(`elder_name`, `room`, `type`, `description`, `time`, `status`, `timeline_json`, `notes`, `created_at`)
+VALUES
+('周佩兰', '2号楼401', 'FALL', '监测到疑似跌倒：卫生间区域体动指数突增后长时间静止', CONCAT(CURDATE(), ' 07:52'), 'NEW', NULL, NULL, NOW() - INTERVAL 200 MINUTE),
+('陈守田', '1号楼101', 'EMERGENCY', '老人主动按下床头一键求助按钮', CONCAT(CURDATE(), ' 09:31'), 'PROCESSING',
+ '[{"time":"2026-09-21 09:31","action":"触发求助","detail":"床头按钮按下"},{"time":"2026-09-21 09:35","action":"社区接单","detail":"工作人员张伟开始处理"}]',
+ '已电话联系家属，正在上门查看', NOW() - INTERVAL 150 MINUTE),
+('刘德海', '3号楼201', 'SMOKE', '烟雾传感器浓度超标，疑似厨房油烟/火情', CONCAT(CURDATE(), ' 11:05'), 'PROCESSING',
+ '[{"time":"2026-09-21 11:05","action":"烟雾告警","detail":"浓度 95.5 超阈值"},{"time":"2026-09-21 11:08","action":"通知住户","detail":"电话提醒老人检查厨房"}]',
+ '初步判断为炒菜油烟，持续观察中', NOW() - INTERVAL 120 MINUTE),
+('张桂芳', '2号楼102', 'PRESSURE', 'AI 情绪分析：连续 3 日语音互动情绪低落', CONCAT(DATE_SUB(CURDATE(), INTERVAL 1 DAY), ' 18:40'), 'CLOSED',
+ '[{"time":"2026-09-20 18:40","action":"情绪预警","detail":"情绪评分连续偏低"},{"time":"2026-09-20 19:10","action":"上门探访","detail":"社区志愿者陪同聊天 40 分钟"},{"time":"2026-09-20 21:00","action":"事件关闭","detail":"情绪明显好转"}]',
+ '志愿者已安排每周两次定期探访', NOW() - INTERVAL 1500 MINUTE),
+('孙耀祖', '1号楼305', 'FALL', '夜间起床徘徊时间异常偏长，疑似跌倒后自行爬起', CONCAT(DATE_SUB(CURDATE(), INTERVAL 2 DAY), ' 03:15'), 'CLOSED',
+ '[{"time":"2026-09-19 03:15","action":"夜间异常","detail":"徘徊 25 分钟未回床"},{"time":"2026-09-19 08:30","action":"核实","detail":"老人自述起身找水喝，无受伤"},{"time":"2026-09-19 09:00","action":"事件关闭","detail":"确认为误报，建议加装夜灯"}]',
+ '家属已确认安全；已为房间加装感应夜灯', NOW() - INTERVAL 3000 MINUTE),
+('王秀兰', '1号楼203', 'PRESSURE', 'AI 情绪分析：今日午后情绪评分低于阈值', CONCAT(CURDATE(), ' 14:25'), 'NEW', NULL, NULL, NOW() - INTERVAL 60 MINUTE);

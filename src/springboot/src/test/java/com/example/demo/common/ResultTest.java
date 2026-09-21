@@ -7,9 +7,7 @@ import static org.junit.Assert.assertNull;
 
 /**
  * 统一响应包装体单元测试：验证成功/失败构造与响应码语义。
- *
- * @author 甲
- */
+ * */
 public class ResultTest {
 
     /** 无数据成功响应：码 200、默认提示、数据为空。 */

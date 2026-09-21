@@ -14,9 +14,7 @@ import java.util.Map;
 /**
  * 异常告警事件管理接口：事件多条件分页查询、单个/批量处理状态流转、
  * 已解决事件清理与单人事件统计。
- *
- * @author 丙
- */
+ * */
 @RestController
 @RequestMapping("/api/alerts")
 public class AlertEventController {

@@ -13,9 +13,7 @@ import static org.junit.Assert.fail;
 /**
  * JWT 工具类单元测试：验证令牌签发、声明解析、空角色兼容与过期/伪造拒绝。
  * 通过反射注入 @Value 配置项，无需启动 Spring 容器。
- *
- * @author 甲
- */
+ * */
 public class JwtUtilTest {
 
     /** HS256 要求密钥至少 32 字节，此处使用 32 个 ASCII 字符。 */

@@ -3,9 +3,7 @@ package com.example.demo.exception;
 /**
  * 业务异常：用于在业务校验失败时携带自定义响应码与提示信息抛出，
  * 由全局异常处理器统一转换为错误响应。
- *
- * @author 甲
- */
+ * */
 public class BusinessException extends RuntimeException {
     /** 业务响应码 */
     private final String code;

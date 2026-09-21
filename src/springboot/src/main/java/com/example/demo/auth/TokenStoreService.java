@@ -7,9 +7,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * 登录 Token 存储：进程内 Map（单机课设演示）。
  * 一个用户只保留最新 Token；服务重启后全部登录态失效。
- *
- * @author 甲
- */
+ * */
 @Service
 public class TokenStoreService {
 

@@ -15,9 +15,7 @@ import java.time.LocalDateTime;
 
 /**
  * 系统登录用户实体，对应数据库 users 表；全平台各端共用，以 role 区分角色。
- *
- * @author 甲
- */
+ * */
 @Getter
 @Setter
 @TableName("users")

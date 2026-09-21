@@ -14,9 +14,7 @@ import java.time.format.DateTimeFormatter;
  * 健康数据实体类
  * 对应数据库表 health_history，承载心率、呼吸、睡眠、体动、在床状态等健康监测指标；
  * 另含若干非表字段，用于业务层传递老人ID以及前端指标行（metricType/metricValue/unit）展示。
- *
- * @author 乙
- */
+ * */
 @Data
 @TableName("health_history")
 public class HealthData {

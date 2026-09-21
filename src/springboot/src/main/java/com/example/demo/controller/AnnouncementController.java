@@ -10,9 +10,7 @@ import javax.annotation.Resource;
 
 /**
  * 公告管理接口，接口前缀 /api/announcements；提供公告分页、发布、修改、删除与撤下。
- *
- * @author 甲
- */
+ * */
 @RestController
 @RequestMapping("/api/announcements")
 public class AnnouncementController {

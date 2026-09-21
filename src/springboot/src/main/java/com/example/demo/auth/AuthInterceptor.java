@@ -13,9 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * 登录认证拦截器：拦截受保护接口，校验请求头中的 Bearer Token，
  * 解析并比对服务端登录态后将用户信息写入 {@link AuthContext}。
- *
- * @author 甲
- */
+ * */
 @Component
 public class AuthInterceptor implements HandlerInterceptor {
 

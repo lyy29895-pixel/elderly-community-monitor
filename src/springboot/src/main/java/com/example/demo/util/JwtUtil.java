@@ -15,9 +15,7 @@ import java.util.Date;
 /**
  * JWT 工具类：生成与解析登录令牌（HS256）。密钥长度需满足 JJWT 要求（建议 UTF-8 下至少 32 字节）。
  * 配置项：{@code app.jwt.secret}、{@code app.jwt.expire-hours}
- *
- * @author 甲
- */
+ * */
 @Component
 public class JwtUtil {
 

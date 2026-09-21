@@ -7,9 +7,7 @@ import java.time.format.DateTimeParseException;
 /**
  * 通用时间解析工具类
  * 双格式兼容（空格分隔 / 带 T 的 ISO 8601），同时支持毫秒时间戳转换（对应 recorded_at 列 bigint）
- *
- * @author 乙
- */
+ * */
 public final class DateTimeParseUtil {
 
     private static final ZoneOffset BEIJING_OFFSET = ZoneOffset.ofHours(8);

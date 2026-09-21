@@ -13,9 +13,7 @@ import java.util.List;
  * 环境数据服务类
  * 负责生成老人居住环境的模拟温湿度时序数据：以老人ID派生稳定的常态基线，
  * 叠加长短周期波形与小幅随机扰动，并支持按时间范围分页查询。
- *
- * @author 丙
- */
+ * */
 @Service
 public class EnvironmentDataService {
 

@@ -13,9 +13,7 @@ import javax.annotation.Resource;
 
 /**
  * 认证服务：负责用户登录校验、JWT 签发与登录态注销。
- *
- * @author 甲
- */
+ * */
 @Service
 public class AuthService {
 

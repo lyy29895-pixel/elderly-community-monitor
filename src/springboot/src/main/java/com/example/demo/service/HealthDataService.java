@@ -16,9 +16,7 @@ import java.util.List;
  * 健康数据服务类
  * 负责基于老人ID生成稳定的差异化模拟健康画像与健康历史时序数据，并提供分页查询能力；
  * 画像与采样逻辑在卡片、详情曲线、风险评估等场景统一复用，保证各处数据口径一致。
- *
- * @author 乙
- */
+ * */
 @Service
 public class HealthDataService {
 

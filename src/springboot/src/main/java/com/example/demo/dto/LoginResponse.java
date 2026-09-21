@@ -5,9 +5,7 @@ import lombok.Data;
 
 /**
  * 登录成功响应 DTO：携带签发的 JWT 与脱敏后的用户信息。
- *
- * @author 甲
- */
+ * */
 @Data
 public class LoginResponse {
     /** 登录成功后签发的 JWT 令牌 */

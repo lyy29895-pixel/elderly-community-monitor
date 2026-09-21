@@ -16,9 +16,7 @@ import javax.annotation.Resource;
 
 /**
  * 认证相关接口：提供登录、社区账号开放注册与注销，接口前缀 /api/auth。
- *
- * @author 甲
- */
+ * */
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {

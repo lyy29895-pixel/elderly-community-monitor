@@ -10,9 +10,7 @@ import javax.annotation.Resource;
 
 /**
  * 公告定时任务：固定速率每分钟触发一次，驱动预约公告发布与到期公告过期处理。
- *
- * @author 甲
- */
+ * */
 @Component
 public class AnnouncementScheduledTask {
 

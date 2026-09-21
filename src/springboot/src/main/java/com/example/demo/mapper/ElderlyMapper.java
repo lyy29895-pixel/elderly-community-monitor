@@ -6,8 +6,6 @@ import com.example.demo.entity.Elderly;
 /**
  * 老人档案表 Mapper：继承 MyBatis-Plus {@link BaseMapper}，
  * 直接获得 elder_profiles 表的增删改查能力，无需自定义 SQL。
- *
- * @author 甲
- */
+ * */
 public interface ElderlyMapper extends BaseMapper<Elderly> {
 }

@@ -4,9 +4,7 @@ import lombok.Data;
 
 /**
  * 单个告警事件状态更新请求体。
- *
- * @author 丙
- */
+ * */
 @Data
 public class AlertStatusUpdateRequest {
     /** 目标处理状态（NEW/PROCESSING/CLOSED 等，必填） */

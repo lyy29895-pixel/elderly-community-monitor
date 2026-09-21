@@ -13,9 +13,7 @@ import java.time.LocalDateTime;
 /**
  * 环境数据控制器
  * 对外提供指定老人居住环境温湿度历史数据的分页查询接口，路径前缀为 /api/elderly/{elderlyId}/environment。
- *
- * @author 乙
- */
+ * */
 @RestController
 @RequestMapping("/api/elderly/{elderlyId}/environment")
 public class EnvironmentDataController {

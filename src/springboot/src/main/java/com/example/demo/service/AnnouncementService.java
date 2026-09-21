@@ -18,9 +18,7 @@ import java.util.Objects;
 /**
  * 公告业务服务：提供公告分页查询、发布（即时/预约）、修改、删除、撤下，
  * 以及供定时任务调用的预约发布与到期过期处理。
- *
- * @author 甲
- */
+ * */
 @Service
 public class AnnouncementService {
 

@@ -9,9 +9,7 @@ import java.time.LocalDateTime;
 
 /**
  * 公告实体，对应数据库 announcements 表，支持即时发布、预约发布与到期自动撤下。
- *
- * @author 甲
- */
+ * */
 @Data
 @TableName("announcements")
 public class Announcement {

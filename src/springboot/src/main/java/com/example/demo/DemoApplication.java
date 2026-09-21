@@ -8,9 +8,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 /**
  * 独居老人智能监护系统后端服务启动入口。
  * <p>启用 Spring Boot 自动装配、MyBatis-Plus Mapper 扫描与定时任务支持。</p>
- *
- * @author 甲
- */
+ * */
 @SpringBootApplication(scanBasePackages = "com.example.demo")
 @MapperScan("com.example.demo.mapper")
 @EnableScheduling

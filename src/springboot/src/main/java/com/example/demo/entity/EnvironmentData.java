@@ -13,9 +13,7 @@ import java.time.LocalDateTime;
 /**
  * 环境数据实体类
  * 对应数据库表 environment_history，承载老人居住环境的温度、湿度、空气质量、光照度等监测指标。
- *
- * @author 乙
- */
+ * */
 @Data
 @TableName("environment_history")
 public class EnvironmentData {

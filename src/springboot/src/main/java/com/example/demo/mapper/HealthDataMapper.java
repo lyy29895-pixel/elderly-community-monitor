@@ -11,9 +11,7 @@ import java.util.List;
 /**
  * 健康数据 Mapper 接口
  * 继承 MyBatis-Plus 的 BaseMapper 获得健康记录的基础 CRUD 能力，并扩展按时间范围查询的自定义方法。
- *
- * @author 乙
- */
+ * */
 public interface HealthDataMapper extends BaseMapper<HealthData> {
 
     /**

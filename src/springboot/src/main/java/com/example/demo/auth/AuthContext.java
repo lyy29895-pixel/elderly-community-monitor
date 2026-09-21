@@ -3,9 +3,7 @@ package com.example.demo.auth;
 /**
  * 当前请求登录上下文：基于 ThreadLocal 持有当前线程对应的用户 ID 与角色，
  * 供业务层在不传递参数的情况下获取当前登录人信息。
- *
- * @author 甲
- */
+ * */
 public final class AuthContext {
     private static final ThreadLocal<Integer> USER_ID = new ThreadLocal<>();
     private static final ThreadLocal<String> ROLE = new ThreadLocal<>();

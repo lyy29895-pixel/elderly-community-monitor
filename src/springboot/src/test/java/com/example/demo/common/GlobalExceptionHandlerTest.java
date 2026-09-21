@@ -11,9 +11,7 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * 全局异常处理器单元测试：验证各类异常到统一错误响应的转换与根因提取。
- *
- * @author 甲
- */
+ * */
 public class GlobalExceptionHandlerTest {
 
     private final GlobalExceptionHandler handler = new GlobalExceptionHandler();

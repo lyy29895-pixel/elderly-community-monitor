@@ -2,9 +2,7 @@ package com.example.demo.enums;
 
 /**
  * 告警事件类型状态机：对监护场景中产生的告警按来源进行大类划分。
- *
- * @author 丙
- */
+ * */
 public enum AlertEventType {
     /** 摔倒/跌倒报警 */
     FALL,

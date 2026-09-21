@@ -8,9 +8,7 @@ import static org.junit.Assert.assertNull;
 
 /**
  * 登录上下文单元测试：验证 ThreadLocal 绑定、读取与清理，防止线程复用串数据。
- *
- * @author 甲
- */
+ * */
 public class AuthContextTest {
 
     @After

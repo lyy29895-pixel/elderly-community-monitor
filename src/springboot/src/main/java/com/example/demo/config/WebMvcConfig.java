@@ -10,9 +10,7 @@ import javax.annotation.Resource;
 
 /**
  * Spring MVC 配置：注册登录认证拦截器并配置全局跨域规则。
- *
- * @author 甲
- */
+ * */
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 

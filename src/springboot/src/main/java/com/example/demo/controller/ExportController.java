@@ -19,9 +19,7 @@ import java.util.List;
  * <p>以 HTML 表格片段配合 .xls 扩展名输出两类报表：异常事件报表（完全复用
  * AlertEventService.page 的筛选与标题回填逻辑）和楼栋健康报表（楼栋归属判定、
  * 关键词过滤及风险/护理等级统计，口径与前端保持一致）。</p>
- *
- * @author 丙
- */
+ * */
 @RestController
 @RequestMapping("/api/export")
 public class ExportController {

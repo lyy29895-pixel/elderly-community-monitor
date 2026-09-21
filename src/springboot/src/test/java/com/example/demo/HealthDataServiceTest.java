@@ -14,9 +14,7 @@ import static org.junit.Assert.*;
  *   - buildMockHealthProfile()：基于老人ID生成稳定的差异化健康画像
  *   - mockSleepStatus()：由画像数组获取睡眠状态中文
  *   - mockOnBedStatus()：由画像数组获取在床状态
- *
- * @author 乙
- */
+ * */
 public class HealthDataServiceTest {
 
     /** 测试用老人ID */

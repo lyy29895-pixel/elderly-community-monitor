@@ -2,9 +2,7 @@ package com.example.demo.util;
 
 /**
  * 身份证号规范化：去首尾空格、去中间空格，末位 x 转大写 X（18 位）。
- *
- * @author 甲
- */
+ * */
 public final class IdCardUtil {
 
     /** 工具类私有构造，禁止外部实例化。 */

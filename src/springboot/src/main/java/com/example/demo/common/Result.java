@@ -3,9 +3,7 @@ package com.example.demo.common;
 /**
  * 统一接口响应包装体：以响应码、响应信息与泛型数据三段式结构返回给前端。
  *
- * @param <T> 响应数据类型
- * @author 甲
- */
+ * @param <T> 响应数据类型 */
 public class Result<T> {
     // 响应码
     /** 响应码（如 200、400、500） */

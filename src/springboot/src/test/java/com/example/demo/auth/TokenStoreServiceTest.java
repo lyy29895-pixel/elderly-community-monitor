@@ -8,9 +8,7 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * 登录 Token 存储单元测试：验证保存、匹配、顶替与清除逻辑（进程内真实对象，无 Mock）。
- *
- * @author 甲
- */
+ * */
 public class TokenStoreServiceTest {
 
     private TokenStoreService store;

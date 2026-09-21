@@ -14,9 +14,7 @@ import java.time.format.DateTimeFormatter;
  * 异常告警事件实体，对应数据库 alerts 表。
  * <p>表内以类型字符串、时间字符串等宽松字段存储历史数据；严重等级、事件发生时间、中文标题、
  * 确认/关闭时间等展示字段不入库，由 getter 按事件类型归类与时间解析动态推导。</p>
- *
- * @author 丙
- */
+ * */
 @Data
 @TableName("alerts")
 public class AlertEvent {

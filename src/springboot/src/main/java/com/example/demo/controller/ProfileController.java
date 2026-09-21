@@ -12,9 +12,7 @@ import javax.annotation.Resource;
 /**
  * 当前登录用户个人资料接口：查询本人资料（密码脱敏）与增量更新手机号、
  * 身份证、性别、年龄、住址、密码等信息。
- *
- * @author 丙
- */
+ * */
 @RestController
 @RequestMapping("/api/profile")
 public class ProfileController {

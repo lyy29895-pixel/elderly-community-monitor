@@ -3,9 +3,7 @@ package com.example.demo.enums;
 /**
  * 全平台统一角色（Web 社区端、App 老人端 / 子女端共用 user 表，以 role 区分）。
  * 数据库存小写：elder、child、community；可选 admin 运维/后台。
- *
- * @author 甲
- */
+ * */
 public final class UserRole {
 
     /** 老人角色（App 老人端） */

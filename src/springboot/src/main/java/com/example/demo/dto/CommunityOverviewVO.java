@@ -8,9 +8,7 @@ import java.util.List;
 /**
  * 辖区概览视图对象：顶部汇总指标、整体统计数据（性别/年龄/设备绑定/事件解决情况）
  * 与逐人风险行列表。
- *
- * @author 丙
- */
+ * */
 @Data
 public class CommunityOverviewVO {
     /** 社区ID（当前不按社区过滤，固定为 null） */

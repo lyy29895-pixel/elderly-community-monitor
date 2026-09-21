@@ -13,9 +13,7 @@ import java.time.LocalDateTime;
 /**
  * 健康数据控制器
  * 对外提供指定老人健康历史数据的分页查询接口，路径前缀为 /api/elderly/{elderlyId}/health。
- *
- * @author 乙
- */
+ * */
 @RestController
 @RequestMapping("/api/elderly/{elderlyId}/health")
 public class HealthDataController {

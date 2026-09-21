@@ -26,9 +26,7 @@ import static org.mockito.Mockito.when;
 
 /**
  * 认证服务单元测试：覆盖登录成功、各类登录失败与注销逻辑（Mockito 隔离数据库）。
- *
- * @author 甲
- */
+ * */
 public class AuthServiceTest {
 
     private UserMapper userMapper;

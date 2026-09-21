@@ -8,9 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * MyBatis-Plus 配置类：注册分页等内置拦截器。
- *
- * @author 甲
- */
+ * */
 @Configuration
 public class MybatisPlusConfig {
     /**

@@ -20,9 +20,7 @@ import static org.mockito.Mockito.when;
 /**
  * 登录认证拦截器单元测试：覆盖预检放行、缺失/非法 Token 拒绝、
  * 登录态比对与上下文写入、异常兜底 401 等分支。
- *
- * @author 甲
- */
+ * */
 public class AuthInterceptorTest {
 
     private JwtUtil jwtUtil;

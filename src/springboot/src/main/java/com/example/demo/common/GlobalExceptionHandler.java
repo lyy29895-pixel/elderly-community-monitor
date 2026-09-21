@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 /**
  * 全局异常处理器：集中捕获 Controller 层抛出的各类异常，
  * 统一转换为 {@link Result} 错误响应，避免向前端暴露原始堆栈。
- *
- * @author 甲
- */
+ * */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
     private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);

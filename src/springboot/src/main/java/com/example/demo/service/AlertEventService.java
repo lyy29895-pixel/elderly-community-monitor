@@ -28,9 +28,7 @@ import javax.annotation.Resource;
  * 异常告警事件服务。
  * <p>提供事件标题解析与类型归类、多条件分页查询（状态同义词归一、严重等级/事件类型/关键词
  * 内存二次过滤、时间范围筛选）、单个与批量状态流转、已解决事件清理及单人事件统计等能力。</p>
- *
- * @author 丙
- */
+ * */
 @Service
 public class AlertEventService {
 

@@ -7,9 +7,7 @@ import static org.junit.Assert.assertNull;
 
 /**
  * 业务异常单元测试：验证默认响应码、自定义响应码与消息透传。
- *
- * @author 甲
- */
+ * */
 public class BusinessExceptionTest {
 
     /** 单参构造默认响应码为 400。 */

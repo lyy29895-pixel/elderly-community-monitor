@@ -33,9 +33,7 @@ import static org.mockito.Mockito.when;
 /**
  * 老人档案服务单元测试：覆盖按角色的列表可见性、详情查询权限委托、
  * 新建（姓名规范化与 elderUserId 顺延）、修改与删除（Mockito 隔离数据库）。
- *
- * @author 甲
- */
+ * */
 public class ElderlyServiceTest {
 
     private ElderlyMapper elderlyMapper;

@@ -10,9 +10,7 @@ import java.time.LocalDateTime;
 
 /**
  * 老人档案实体，对应数据库 elder_profiles 表，记录老人基本信息、护理与风险评级等。
- *
- * @author 甲
- */
+ * */
 @Data
 @TableName("elder_profiles")
 public class Elderly {

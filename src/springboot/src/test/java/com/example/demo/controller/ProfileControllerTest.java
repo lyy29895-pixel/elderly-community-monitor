@@ -18,9 +18,7 @@ import static org.mockito.Mockito.when;
 /**
  * 个人中心接口单元测试：覆盖本人资料查询（密码脱敏）与
  * 增量更新（手机号/身份证规范化/密码空串忽略）等分支（Mockito 隔离数据库）。
- *
- * @author 甲
- */
+ * */
 public class ProfileControllerTest {
 
     private UserMapper userMapper;

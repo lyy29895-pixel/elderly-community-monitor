@@ -30,9 +30,7 @@ import static org.mockito.Mockito.when;
 /**
  * 老人数据访问权限服务单元测试：覆盖各角色的档案访问判定、
  * 可访问 ID 集合与社区工作人员权限断言（Mockito 隔离数据库）。
- *
- * @author 甲
- */
+ * */
 public class ElderlyAccessServiceTest {
 
     private static final String NO_ACCESS_MSG = "无权限访问该老人数据";

@@ -18,9 +18,7 @@ import java.util.stream.Collectors;
 /**
  * 老人数据访问权限服务：按角色判定当前用户对老人档案的可见性，
  * 社区/管理员可访问全部，老人仅可访问与本人用户名关联的档案，子女无权访问。
- *
- * @author 甲
- */
+ * */
 @Service
 public class ElderlyAccessService {
 

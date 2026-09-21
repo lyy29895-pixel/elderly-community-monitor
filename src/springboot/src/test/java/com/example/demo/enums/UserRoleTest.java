@@ -9,9 +9,7 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * 用户角色工具单元测试：验证角色归一化与各角色判定方法。
- *
- * @author 甲
- */
+ * */
 public class UserRoleTest {
 
     /** null 与空白归一化为 null。 */

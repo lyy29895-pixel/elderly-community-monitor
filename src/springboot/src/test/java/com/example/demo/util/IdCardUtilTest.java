@@ -6,9 +6,7 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * 身份证号规范化单元测试：验证去空白、末位 x 转大写与空值兜底。
- *
- * @author 甲
- */
+ * */
 public class IdCardUtilTest {
 
     /** null 输入返回空串。 */
