@@ -27,6 +27,19 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- 测试：Mockito + spring-test（MockHttpServletRequest / ReflectionTestUtils） -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- 测试代码为 JUnit 4 风格（org.junit.*），2.4+ 需显式引入 vintage 引擎（传递引入 junit:junit） -->
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
+
         <!-- MyBatis-Plus 启动器（已传递引入 mybatis-spring 与 mybatis 核心，无需再引 mybatis-spring-boot-starter） -->
         <dependency>
             <groupId>com.baomidou</groupId>

@@ -1,0 +1,16 @@
+com\example\demo\DateTimeParseUtilTest.class
+com\example\demo\exception\BusinessExceptionTest.class
+com\example\demo\controller\ProfileControllerTest.class
+com\example\demo\auth\TokenStoreServiceTest.class
+com\example\demo\common\GlobalExceptionHandlerTest.class
+com\example\demo\auth\AuthInterceptorTest.class
+com\example\demo\service\ElderlyAccessServiceTest.class
+com\example\demo\auth\AuthServiceTest.class
+com\example\demo\auth\AuthContextTest.class
+com\example\demo\service\ElderlyServiceTest.class
+com\example\demo\util\IdCardUtilTest.class
+com\example\demo\HealthDataServiceTest.class
+com\example\demo\util\JwtUtilTest.class
+com\example\demo\CommunityOverviewServiceTest.class
+com\example\demo\enums\UserRoleTest.class
+com\example\demo\common\ResultTest.class
