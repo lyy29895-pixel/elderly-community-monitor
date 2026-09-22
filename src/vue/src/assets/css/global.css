@@ -1,0 +1,37 @@
+/* 全局浅天青主题（与各业务页、公告页一致） */
+:root {
+  --yi-brand: #365062;
+  --yi-brand-soft: rgba(54, 80, 98, 0.12);
+  --yi-brand-softer: rgba(130, 170, 205, 0.32);
+  --yi-text-body: #415a6e;
+  --yi-text-muted: #6d8aa0;
+
+  --yi-shell-bg: #e5eff7;
+  --yi-main-surface: #f3f8fc;
+  --yi-page-gradient: linear-gradient(165deg, #f7fbfe 0%, #eef5fc 48%, #e3eef9 100%);
+  --yi-aside-gradient: linear-gradient(180deg, #f7fbfe 0%, #eef5fc 52%, #f9fcfe 100%);
+  --yi-card-surface: #fdfeff;
+  --yi-card-border: rgba(130, 170, 205, 0.28);
+  --yi-card-shadow: rgba(65, 110, 150, 0.08);
+
+  --yi-panel-header-bg: linear-gradient(180deg, #f9fcfe 0%, #eef4fa 100%);
+  --yi-panel-header-border: rgba(145, 185, 215, 0.38);
+  --yi-table-header-bg: linear-gradient(180deg, #f2f7fc 0%, #e6f0fa 100%);
+  --yi-table-row-hover: rgba(205, 232, 248, 0.48);
+  --yi-table-row-striped: rgba(246, 250, 254, 0.96);
+
+  --yi-accent: #a8d4ea;
+  --yi-accent-deep: #6eb0d4;
+  --yi-accent-soft-glow: rgba(110, 176, 212, 0.24);
+  --yi-accent-text: #274a62;
+  --yi-pagination-active: #4f94c4;
+
+  /* 顶栏高度：与 Header 一致，供 layout / 侧栏 / 各页 min-height 使用 */
+  --yi-header-height: 62px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
